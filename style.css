@@ -1,0 +1,64 @@
+/* ... (Existing code above this line remains the same) ... */
+
+/* 5. Frame Styling and Collage (UPDATED) */
+.frame {
+    /* Required distance between frames */
+    margin-right: 25px; 
+    margin-bottom: 25px; 
+    flex-shrink: 0; 
+    cursor: pointer;
+    background-color: #1f1f1f;
+    border-radius: 15px;
+    border: 5px solid var(--frame-border-color);
+    box-shadow: 0 5px 15px var(--frame-shadow-color);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    
+    /* ADDED: Position context for the absolute caption overlay */
+    position: relative; 
+    /* Ensures nothing overflows the rounded corners */
+    overflow: hidden; 
+}
+
+/* ... (Existing size-small, size-medium, size-large rules remain the same) ... */
+
+
+/* NEW: Caption Overlay Styling */
+.caption-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Subtle dark background for readability */
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    
+    /* Start fully transparent and move up slightly */
+    transform: translateY(100%); 
+    opacity: 0;
+    
+    /* Smooth transition for the effect */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; 
+}
+
+.caption-overlay h3 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+/* 7. Hover Animation (UPDATED to include caption reveal) */
+.frame:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* NEW: Show the caption when the frame is hovered */
+.frame:hover .caption-overlay {
+    transform: translateY(0); /* Move from bottom to its natural position */
+    opacity: 1; /* Make it visible */
+}
+
+/* ... (Rest of the CSS remains the same) ... */
